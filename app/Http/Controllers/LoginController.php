@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
-<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
-=======
->>>>>>> d5a7d1d4bb3b2361ef4607c8144d75562223d866
 use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
@@ -36,7 +33,7 @@ class LoginController extends Controller
         //login
         $auth = Auth::attempt(['email' => $request->email, 'password' =>$request-> password]);
         if(!$auth) {
-            return  redirect(route('login'))->with('massage','Thông tin đăng nhập sai');
+            return  redirect(route('login'))->with('message','Thông tin đăng nhập sai');
         }
         return redirect(route('userIndex'));
     }
