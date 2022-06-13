@@ -34,17 +34,24 @@
                     <h4 class="text-uppercase font-bold mb-0">Sign In</h4>
                 </div>
                 <div class="p-20">
-                    <form class="form-horizontal m-t-20" action="index.html">
-
+                    <form class="form-horizontal m-t-20" method="post" action="{{route('postAuthen')}}">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li class="text-danger">{{ $error }}</li>
+                            @endforeach
+                        </ul>
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input class="form-control" type="text" required="" placeholder="Username">
+                                <input class="form-control" name="email" type="text" value="{{ old('email') }}"  placeholder="email...">
+                                <p class="text-danger">{{ $errors->first('email') }}</p>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input class="form-control" type="password" required="" placeholder="Password">
+                                <input class="form-control" name="password" type="password" value="{{ old('password') }}"  placeholder="password...">
+                                <p class="text-danger">{{ $errors->first('password') }}</p>
                             </div>
                         </div>
 
