@@ -25,5 +25,8 @@ Route::get('/logout',[LoginController::class,'logout'])->name("logout");
 
 Route::post('/authen',[LoginController::class,'authen'])->name("postAuthen");
 
-route::get('/admin/users',[UserController::class,'index'])->name("userIndex");
+// route::get('/admin/users',[UserController::class,'index'])->name("userIndex");
 
+route::group(['prefix' => 'admin','middleware' => 'login'],function(){
+        route::get('/users',[UserController::class,'index'])->name("userIndex");
+});

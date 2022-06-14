@@ -33,6 +33,12 @@
                 <div class="text-center">
                     <h4 class="text-uppercase font-bold mb-0">Sign In</h4>
                 </div>
+                @if (session('message'))
+                <br>
+                <div class="alert alert-danger">
+                    {{ session('message') }}
+                </div>
+            @endif
                 <div class="p-20">
                     <form class="form-horizontal m-t-20"  method="POST" action="{{route('postAuthen')}}">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
