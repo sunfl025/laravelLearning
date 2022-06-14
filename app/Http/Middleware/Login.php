@@ -19,14 +19,11 @@ class Login
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check())
-        {
-            return $next($request);
+        if (Auth::check()) {
+            if (Auth::user()->role == 'admin') {
+                return $next($request);
+            }
         }
-        else
-        {
-            return redirect(route('login'))->with('message','Bạn chưa đăng nhập');
-        }
-        
+        return redirect(route('login'))->with('message', 'Bạn chưa đăng nhập');
     }
 }

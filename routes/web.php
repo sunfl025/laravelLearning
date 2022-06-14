@@ -29,4 +29,5 @@ Route::post('/authen',[LoginController::class,'authen'])->name("postAuthen");
 
 route::group(['prefix' => 'admin','middleware' => 'login'],function(){
         route::get('/users',[UserController::class,'index'])->name("userIndex");
+        route::get('/user/add',[UserController::class,'create'])->name("createUser");
 });
