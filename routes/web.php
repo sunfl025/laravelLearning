@@ -19,6 +19,9 @@ Route::get('/', function () {
     return "Trang";
 });
 
+// route::get('/layouts',function(){
+//     return view('pages.admin.users.index');
+// });
 Route::get('/login', [LoginController::class,'login'])->name("login");
 
 Route::get('/logout',[LoginController::class,'logout'])->name("logout");
@@ -29,4 +32,11 @@ Route::post('/authen',[LoginController::class,'authen'])->name("postAuthen");
 
 route::group(['prefix' => 'admin','middleware' => 'login'],function(){
         route::get('/users',[UserController::class,'index'])->name("userIndex");
+        route::get('/users/add',[UserController::class,'create'])->name("userCreate");
+        route::post('/users/store',[UserController::class,'store'])->name("userStore");
+        route::post('/users/destroy/{id}',[UserController::class,'destroy'])->name("userDelete");
+        route::get('/users/edit/{id}',[UserController::class,'edit'])->name("userEdit");
+        route::post('/users/update/{id}',[UserController::class,'update'])->name("userUpdate");
 });
+
+

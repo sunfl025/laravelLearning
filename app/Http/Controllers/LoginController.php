@@ -33,7 +33,7 @@ class LoginController extends Controller
         //login
         $auth = Auth::attempt(['email' => $request->email, 'password' =>$request-> password]);
         if(!$auth) {
-            return  redirect(route('login'))->with('massage','Thông tin đăng nhập sai');
+            return  redirect(route('login'))->with('message','Thông tin đăng nhập sai');
         }
         return redirect(route('userIndex'));
     }
